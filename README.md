@@ -24,9 +24,15 @@ python3 -m http.server 4173
 修改文件后提交并推送，GitHub Pages 会从 `main` 分支根目录自动发布：
 
 ```sh
-git add index.html style.css script.js README.md
+git add index.html style.css script.js README.md assets/
 git commit -m "Update personal website"
 git push origin main
 ```
 
-当前姓名、作品、文章与联系方式为示例内容，可按需替换。
+作品与随想目前为概念示例；个人账号与联系入口使用真实 GitHub 主页。
+
+## 视觉设计
+
+深色摄影风格：近黑画布（#171721）、石墨卡片（#1e1e2a）、象牙白文字（#ededf3）；钴蓝（#5266eb）仅用于首屏主按钮。
+
+`assets/alpine.jpg` 为本地山景摄影资源，来源：https://images.unsplash.com/photo-1464822759023-fed622ff2c3b 。页面不依赖外部字体或远程图片加载。

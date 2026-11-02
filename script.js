@@ -1,8 +1,71 @@
-const dialog=document.querySelector('#detail');
-const showDetail=(label,title,paragraphs)=>{document.querySelector('#dialog-label').textContent=label;document.querySelector('#dialog-title').textContent=title;const content=document.querySelector('#dialog-content');content.replaceChildren();paragraphs.forEach((text,index)=>{const p=document.createElement('p');p.textContent=text;if(index===paragraphs.length-1)p.className='dialog-note';content.append(p)});dialog.showModal()};
-const projects=[{title:'小日子 · 生活记录',text:['一个以日常记录为主题的网站设计示例。温柔的绿色、纸张般的底色和留白，让文字与生活片段成为主角。','可以把这里换成你的项目背景、负责的工作、创作过程与最终成果，也可以添加项目链接。','此项目为视觉展示示例，尚未关联真实作品。']},{title:'Orbit · 专注空间',text:['一个围绕专注体验的产品概念。以深蓝色和柔和的球体构建安静、有秩序的视觉空间。','可以在这里介绍你解决的问题、设计过程以及项目中的收获。','此项目为视觉展示示例，尚未关联真实产品。']}];
-document.querySelectorAll('[data-project]').forEach(button=>button.addEventListener('click',()=>{const project=projects[Number(button.dataset.project)];showDetail('SELECTED WORK / 示例项目',project.title,project.text)}));
-const notes=[['从一个小小的想法开始','不必等到一切准备好才开始。把一个想法写下来，做成一个最小的版本，再从实际的体验中寻找下一个方向。','创造有时很朴素：发现一个小问题，然后认真试着解决它。'],['给生活留一点空白','留一点时间散步，留一点空间发呆。暂时放下对效率的追求，也许会注意到那些匆忙时看不到的细节。','记录不必宏大。一束光、一段对话，或是今天心情不错的理由，都值得留下。'],['保持一个初学者的心态','面对陌生的事，允许自己从最简单的问题问起。好奇心比急着证明自己知道答案，更能带来新的发现。','学习是一场没有固定终点的探索。今天比昨天多理解一点，就已经很好。']];
-document.querySelectorAll('[data-note]').forEach(button=>button.addEventListener('click',()=>{const [title,...paragraphs]=notes[Number(button.dataset.note)];showDetail('NOTES & THOUGHTS / 随想示例',title,[...paragraphs,'此文为网站示例内容，可替换为你的原创文章。'])}));
-document.querySelector('#contact-button').addEventListener('click',()=>showDetail('SAY HELLO / 联系方式','期待与你建立连接',['这里将展示你的邮箱或社交账号。','目前尚未配置真实联系方式。修改网站源码后，就可以让访客通过这个入口联系你。']));
-document.querySelectorAll('.close-dialog,.close-bottom').forEach(button=>button.addEventListener('click',()=>dialog.close()));dialog.addEventListener('click',event=>{if(event.target===dialog){const rect=dialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)dialog.close()}});document.querySelector('#year').textContent=new Date().getFullYear();
+const dialog = document.querySelector('#detail');
+let dialogTrigger;
+
+function showDetail(label, title, paragraphs, trigger) {
+  dialogTrigger = trigger;
+  document.querySelector('#dialog-label').textContent = label;
+  document.querySelector('#dialog-title').textContent = title;
+  const content = document.querySelector('#dialog-content');
+  content.replaceChildren();
+  paragraphs.forEach((text, index) => {
+    const paragraph = document.createElement('p');
+    paragraph.textContent = text;
+    if (index === paragraphs.length - 1) paragraph.className = 'dialog-note';
+    content.append(paragraph);
+  });
+  dialog.showModal();
+}
+
+const projects = [
+  { title: '小日子 · Little Days', text: [
+    '一个以日常记录为主题的网站设计概念。以安静的山景、细腻的文字与充足的留白，为生活片刻提供一个可以停留的空间。',
+    '页面围绕记录、阅读和归档展开，探索如何让数字空间承载日常的温度。',
+    '此项目为概念展示，尚未关联真实产品。'
+  ] },
+  { title: '专注空间 · Orbit', text: [
+    '一个围绕专注体验的产品概念。以克制的单色界面、圆形计时器和清晰的信息层级，减少视觉干扰。',
+    '把复杂留在界面背后，把注意力留给眼前的事。这个概念探索了计时与专注体验之间的关系。',
+    '此项目为概念展示，尚未关联真实产品。'
+  ] }
+];
+document.querySelectorAll('[data-project]').forEach(button => {
+  button.addEventListener('click', () => {
+    const project = projects[Number(button.dataset.project)];
+    showDetail('SELECTED WORK / 概念示例', project.title, project.text, button);
+  });
+});
+
+const notes = [
+  ['从一个小小的想法开始', '不必等到一切准备好才开始。把一个想法写下来，做成一个最小的版本，再从实际的体验中寻找下一个方向。', '创造有时很朴素：发现一个小问题，然后认真试着解决它。'],
+  ['给生活留一点空白', '留一点时间散步，留一点空间发呆。暂时放下对效率的追求，也许会注意到那些匆忙时看不到的细节。', '记录不必宏大。一束光、一段对话，或是今天心情不错的理由，都值得留下。'],
+  ['保持一个初学者的心态', '面对陌生的事，允许自己从最简单的问题问起。好奇心比急着证明自己知道答案，更能带来新的发现。', '学习是一场没有固定终点的探索。今天比昨天多理解一点，就已经很好。']
+];
+document.querySelectorAll('[data-note]').forEach(button => {
+  button.addEventListener('click', () => {
+    const [title, ...paragraphs] = notes[Number(button.dataset.note)];
+    showDetail('FIELD NOTES / 随想示例', title, [...paragraphs, '此文为示例内容，可替换为原创文章。'], button);
+  });
+});
+document.querySelectorAll('.close-dialog, .close-bottom').forEach(button => {
+  button.addEventListener('click', () => dialog.close());
+});
+dialog.addEventListener('click', event => {
+  if (event.target !== dialog) return;
+  const rect = dialog.getBoundingClientRect();
+  if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+});
+dialog.addEventListener('close', () => dialogTrigger?.focus({ preventScroll: true }));
+
+const header = document.querySelector('#header');
+const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 40);
+window.addEventListener('scroll', updateHeader, { passive: true });
+updateHeader();
+const navigation = document.querySelectorAll('[data-nav]');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    navigation.forEach(link => link.classList.toggle('active', link.dataset.nav === entry.target.id));
+  });
+}, { rootMargin: '-20% 0px -55% 0px' });
+document.querySelectorAll('#home, #work, #about, #notes, #contact').forEach(section => observer.observe(section));
+document.querySelector('#year').textContent = new Date().getFullYear();
