@@ -1,0 +1,42 @@
+[
+  {
+    "url": "https://mp.weixin.qq.com/s/sYqb5vhkI2ku376iYkixaw",
+    "title": "DeepMind Genie 4 发布：自家首个「会说话」的实时世界模型，原生音频意味着什么",
+    "author": "椀程说",
+    "date": "2026年10月29日 22:07",
+    "tag": "models",
+    "category": "模型进展",
+    "dateISO": "2026-10-29",
+    "summary": "从原生音频切入，讨论实时世界模型的交互体验，以及它在游戏、XR、预可视化和 Agent 训练中的潜在应用。区分研究预览、测试反馈与产品推演。"
+  },
+  {
+    "url": "https://mp.weixin.qq.com/s/x_MJQXRuw2I-Em4hEcf5WQ",
+    "title": "GPT-6.1 Terra：电脑操作 Agent 的「更便宜一档」",
+    "author": "椀程说",
+    "date": "2026年10月27日 22:17",
+    "tag": "models",
+    "category": "模型进展",
+    "dateISO": "2026-10-27",
+    "summary": "从电脑操作 Agent 的产品视角，讨论模型单价、成功任务总成本与人工审核之间的关系。比调用更便宜更重要的，是如何设定权限边界和验收标准。"
+  },
+  {
+    "url": "https://mp.weixin.qq.com/s/8ShJvmWv7f8KFhFHyrTohA",
+    "title": "Claude 自己绕过付费墙，拿到了佐治亚州选票汇总",
+    "author": "椀程说",
+    "date": "2026年10月26日 23:26",
+    "tag": "safety",
+    "category": "Agent 安全",
+    "dateISO": "2026-10-26",
+    "summary": "围绕文章所述的付费墙事件，讨论目标驱动的 Agent 为什么需要明确的访问边界，以及最小权限、工具审计和关键节点人审如何进入产品设计。"
+  },
+  {
+    "url": "https://mp.weixin.qq.com/s/ZrHVtvtX5CC_klPsom6rRw",
+    "title": "这不是科幻小说 ——OpenAI首次披露了一起智能体瞒报事故",
+    "author": "椀程说",
+    "date": "2026年10月23日 01:59",
+    "tag": "safety",
+    "category": "Agent 安全",
+    "dateISO": "2026-10-23",
+    "summary": "从智能体监控与测试的关系出发，讨论“任务完成”与“过程可信”之间的张力。关注代码修改、测试验收与告警机制中的产品边界。"
+  }
+]

@@ -6,8 +6,9 @@
 
 ## 页面与维护源
 
-- `index.html`：个人介绍、文章摘要、分类筛选、站内搜索、AI 工具和侧栏。
-- `posts/`：三篇可直接访问、分享的静态文章；基于实际建站、Pi 安装和技能排查整理。
+- `index.html`：个人介绍、四篇公众号文章、分类筛选、站内搜索、AI 工具和侧栏。
+- `articles.json`：四篇公众号文章的已核实标题、原文链接、公众号名称、发布日期及网站摘要。
+- `posts/`：保留的早期建站与工具记录；当前首页展示用户提供的公众号文章。
 - `style.css`：浅色双栏博客布局，最小页面宽度 1100px。
 - `script.js`：文章关键词搜索、主题筛选、空结果与重置交互。
 - `.nojekyll`：让 GitHub Pages 直接发布静态文件。
@@ -28,12 +29,12 @@ python3 -m http.server 4173
 编辑页面后提交并推送，GitHub Pages 会从 `main` 分支根目录自动发布：
 
 ```sh
-git add index.html style.css script.js posts/ README.md
+git add index.html style.css script.js articles.json posts/ README.md
 git commit -m "Update personal website"
 git push origin main
 ```
 
-新增文章时，在 `posts/` 添加 HTML 文件，同时更新首页文章卡片、搜索关键词、分类数量和侧栏入口。文章卡片通过 `data-category` 指定分类，`data-search` 提供检索内容。
+新增文章时，在 `posts/` 添加 HTML 文件，同时更新首页文章卡片、搜索关键词、分类数量和侧栏入口。文章卡片通过 `data-category` 指定分类，`data-search` 提供检索内容。当前公众号文章使用「模型进展」「Agent 安全」两类，点击直接打开微信原文。新增公众号文章时同步维护 `articles.json` 和首页列表。
 
 ## 视觉方向
 
